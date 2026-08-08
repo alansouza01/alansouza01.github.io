@@ -240,8 +240,24 @@
     transform: rotate(var(--a)) translateX(48%);
   }
   @keyframes orbit-spin{ to{ transform: rotate(360deg); } }
+
+  /* organic deformed ring, alive and slowly turning */
+  .blob-ring{
+    position:absolute; inset:5%;
+    border: 1.5px solid var(--green-line);
+    box-shadow: inset 0 0 20px -4px var(--glow);
+    z-index:0;
+    animation: blob-morph 13s ease-in-out infinite;
+  }
+  @keyframes blob-morph{
+    0%   { border-radius: 42% 58% 63% 37% / 41% 45% 55% 59%; transform: rotate(0deg) scale(1); }
+    33%  { border-radius: 63% 37% 41% 59% / 58% 42% 58% 42%; transform: rotate(120deg) scale(1.02); }
+    66%  { border-radius: 37% 63% 55% 45% / 63% 37% 63% 37%; transform: rotate(240deg) scale(.99); }
+    100% { border-radius: 42% 58% 63% 37% / 41% 45% 55% 59%; transform: rotate(360deg) scale(1); }
+  }
+
   @media (prefers-reduced-motion: reduce){
-    .orbit{ animation:none; }
+    .orbit, .blob-ring{ animation:none; }
   }
 
   .photo-wrap{
@@ -507,6 +523,7 @@
     </div>
     <div class="photo-stage">
       <div class="aura-core"></div>
+      <div class="blob-ring"></div>
       <div class="orbit">
         <div class="mote" style="--a:0deg;"></div>
         <div class="mote" style="--a:60deg;"></div>
