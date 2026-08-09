@@ -82,7 +82,11 @@
     backdrop-filter:blur(8px);
     border-bottom:1px solid var(--line);
   }
-  .brand{ font-weight:800; font-size:.98rem; text-decoration:none; }
+  .brand{
+    font-weight:800; font-size:clamp(.8rem,3.2vw,.98rem); text-decoration:none;
+    white-space:nowrap; flex:none; overflow:hidden; text-overflow:ellipsis;
+    max-width:44vw;
+  }
   nav.mainnav{
     display:flex; gap:clamp(.8rem,2vw,1.5rem); font-size:.78rem; font-weight:600;
     letter-spacing:.03em; text-transform:uppercase;
